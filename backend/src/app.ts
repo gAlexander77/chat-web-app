@@ -6,15 +6,15 @@ import cors from 'cors';
 import { connectToDatabase } from './database/db';
 import setupChat from './chat/chatService';
 
-const port = 3000;
+const port = 3001;
 
 const app = express();
 const server = http.createServer(app);
 const io = new Server(server);
-
+app.use(cors());
 connectToDatabase();
 
-app.use(cors());
+
 app.use(express.json());
 
 app.get('/', (req, res) => {
